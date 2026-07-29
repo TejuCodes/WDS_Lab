@@ -1,5 +1,5 @@
-import Navbar from "../src/layouts/Navbar";
-
+import Navbar from "./components/layout/Navbar";
+import Home from "./components/sections/Hero"
 function App() {
   return (
     <>
@@ -8,6 +8,7 @@ function App() {
       <main className="container" style={{ marginTop: "100px" }}>
         <h1>Welcome to SecureLearn</h1>
       </main>
+      <Home/>
     </>
   );
 }
