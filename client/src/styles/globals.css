@@ -1,0 +1,50 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+body{
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    font-family:"Inter",sans-serif;
+    overflow-x:hidden;
+    
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    outline:none;
+    transition:var(--transition);
+}
+
+input,
+textarea{
+    outline:none;
+    border:none;
+    font-family:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:var(--container-width);
+    margin:auto;
+}

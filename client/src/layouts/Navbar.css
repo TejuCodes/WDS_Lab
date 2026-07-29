@@ -1,0 +1,348 @@
+/* ===========================
+   CSS VARIABLES
+=========================== */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #1c2333;
+  --text-primary: #ffffff;
+  --text-secondary: #8b949e;
+  --border-color: #30363d;
+  --primary-color: #58a6ff;
+  --primary-hover: #1f6feb;
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --radius: 12px;
+  --transition: 0.3s ease;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(15px);
+  background: rgba(13, 17, 23, 0.85);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.logo h2 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+
+.logo small {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  display: block;
+}
+
+/* Navigation */
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: var(--text-secondary);
+  transition: var(--transition);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav a:hover {
+  color: var(--text-primary);
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  padding: 8px 0;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.dropdown-btn:hover {
+  color: var(--text-primary);
+}
+
+.dropdown-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  min-width: 220px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  z-index: 999;
+  padding: 4px 0;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-menu a {
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.dropdown-menu a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -2px;
+}
+
+/* Right Section */
+.right-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.theme-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-size: 1.1rem;
+}
+
+.theme-btn:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.theme-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.login-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+.login-btn:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.start-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.start-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.start-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+  display: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: var(--transition);
+}
+
+.menu-btn:hover {
+  color: var(--text-primary);
+}
+
+.menu-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.mobile-buttons {
+  display: none;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 992px) {
+  .nav {
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    background: var(--bg-secondary);
+    transition: var(--transition);
+    padding: 30px 20px;
+    border-bottom: 1px solid var(--border-color);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .nav.active {
+    left: 0;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .nav ul li {
+    width: 100%;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .dropdown-menu a {
+    padding: 10px 16px;
+  }
+
+  .right-section {
+    display: none;
+  }
+
+  .mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .mobile-buttons .theme-btn {
+    width: 100%;
+    border-radius: 10px;
+    height: 48px;
+  }
+
+  .mobile-buttons .login-btn,
+  .mobile-buttons .start-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo h2 {
+    font-size: 1.1rem;
+  }
+
+  .logo small {
+    font-size: 0.65rem;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+
+  .navbar-container {
+    height: 64px;
+  }
+
+  .nav {
+    top: 64px;
+    padding: 20px;
+    max-height: calc(100vh - 64px);
+  }
+}
