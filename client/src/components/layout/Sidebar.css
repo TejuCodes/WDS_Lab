@@ -19,8 +19,8 @@
   flex-direction: column;
   justify-content: space-between;
 
-  z-index: 1000;
   transition: var(--transition);
+  z-index: 1000;
 }
 
 /* ===========================
@@ -61,28 +61,37 @@
 }
 
 .menu li {
+  list-style: none;
+}
+
+/* ===========================
+   NAVLINK
+=========================== */
+
+.menu a {
   display: flex;
   align-items: center;
   gap: 15px;
+
+  width: 100%;
 
   padding: 15px;
 
   border-radius: 12px;
 
-  cursor: pointer;
-
   color: var(--text-secondary);
+  text-decoration: none;
 
   transition: var(--transition);
 }
 
-.menu li:hover {
-  background: var(--bg-card);
+.menu a:hover {
+  background: var(--card-bg);
   color: var(--text-primary);
   transform: translateX(6px);
 }
 
-.active {
+.menu a.active {
   background: rgba(220, 38, 38, .15);
   color: var(--text-primary);
   border-left: 4px solid var(--primary-color);
@@ -104,8 +113,12 @@
   justify-content: space-between;
   align-items: center;
 
-  background: transparent;
+  padding: 15px;
+
   border: none;
+  border-radius: 12px;
+
+  background: transparent;
 
   color: var(--text-secondary);
 
@@ -117,6 +130,7 @@
 }
 
 .labs-btn:hover {
+  background: var(--card-bg);
   color: var(--text-primary);
 }
 
@@ -126,41 +140,50 @@
   gap: 15px;
 }
 
-/* ===========================
-   SUB MENU
-=========================== */
-
-.submenu {
-  margin-left: 30px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.submenu li {
-  padding: 10px;
-  border-radius: 10px;
-
-  color: var(--text-secondary);
-
-  font-size: .9rem;
-
-  transition: var(--transition);
-}
-
-.submenu li:hover {
-  background: var(--bg-card);
-  color: var(--text-primary);
-}
-
 .rotate {
   transform: rotate(180deg);
   transition: .3s;
 }
 
 /* ===========================
-   BOTTOM BUTTONS
+   SUBMENU
+=========================== */
+
+.submenu {
+  margin-left: 25px;
+  margin-top: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.submenu li {
+  list-style: none;
+}
+
+.submenu a {
+  display: block;
+
+  padding: 10px 14px;
+
+  border-radius: 8px;
+
+  color: var(--text-secondary);
+  text-decoration: none;
+
+  font-size: .9rem;
+
+  transition: var(--transition);
+}
+
+.submenu a:hover {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* ===========================
+   BOTTOM
 =========================== */
 
 .bottom {
@@ -171,34 +194,37 @@
 
 .theme-btn,
 .login-btn {
+  width: 100%;
   height: 46px;
-
-  border: none;
-
-  border-radius: 12px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 
+  border: none;
+  border-radius: 12px;
+
   font-size: .95rem;
+
+  cursor: pointer;
 
   transition: var(--transition);
 }
 
 .theme-btn {
-  background: var(--bg-card);
+  background: var(--card-bg);
   color: var(--text-primary);
 }
 
 .theme-btn:hover {
-  background: var(--border-color);
+  background: var(--bg-tertiary);
 }
 
 .login-btn {
   background: var(--primary-color);
-  color: #fff;
+  color: white;
+  text-decoration: none;
 }
 
 .login-btn:hover {
@@ -217,10 +243,9 @@
    RESPONSIVE
 =========================== */
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
 
   .mobile-btn {
-
     display: flex;
 
     position: fixed;
@@ -231,14 +256,14 @@
     width: 46px;
     height: 46px;
 
-    background: var(--primary-color);
-    color: #fff;
+    justify-content: center;
+    align-items: center;
 
     border: none;
     border-radius: 12px;
 
-    justify-content: center;
-    align-items: center;
+    background: var(--primary-color);
+    color: white;
 
     cursor: pointer;
 
@@ -247,37 +272,33 @@
     transition: var(--transition);
   }
 
-  .mobile-btn:hover{
+  .mobile-btn:hover {
     background: var(--primary-hover);
   }
 
   .sidebar {
-
     left: -260px;
-
   }
 
   .sidebar.show {
-
     left: 0;
-
   }
 
 }
 
-@media (max-width:576px){
+@media (max-width: 576px) {
 
-  .sidebar{
-    width:220px;
-    padding:20px;
+  .sidebar {
+    width: 220px;
+    padding: 20px;
   }
 
-  .logo h2{
-    font-size:1.4rem;
+  .logo h2 {
+    font-size: 1.35rem;
   }
 
-  .logo small{
-    font-size:.75rem;
+  .logo small {
+    font-size: .75rem;
   }
 
 }

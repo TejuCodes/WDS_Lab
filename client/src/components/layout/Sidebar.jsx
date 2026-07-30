@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import {
   FaShieldAlt,
@@ -18,37 +19,24 @@ import {
 import "./Sidebar.css";
 
 function Sidebar() {
-
-  /* ===========================
-     STATES
-  =========================== */
-
   const [open, setOpen] = useState(false);
-
   const [labs, setLabs] = useState(false);
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "dark"
   );
 
-  /* ===========================
-     THEME
-  =========================== */
-
   useEffect(() => {
-
-    document.body.classList.toggle(
-      "light",
-      theme === "light"
-    );
-
+    document.body.classList.toggle("light", theme === "light");
     localStorage.setItem("theme", theme);
-
   }, [theme]);
+
+  const closeSidebar = () => {
+    setOpen(false);
+  };
 
   return (
     <>
-
       {/* Mobile Menu Button */}
 
       <button
@@ -62,9 +50,9 @@ function Sidebar() {
 
       <aside className={open ? "sidebar show" : "sidebar"}>
 
-        <div>
+        {/* Logo */}
 
-          {/* Logo */}
+        <div>
 
           <div className="logo">
 
@@ -81,10 +69,22 @@ function Sidebar() {
 
           <ul className="menu">
 
-            <li className="active">
-              <FaHome />
-              Home
+            {/* Home */}
+
+            <li>
+
+              <NavLink
+                to="/"
+                end
+                onClick={closeSidebar}
+              >
+                <FaHome />
+                Home
+              </NavLink>
+
             </li>
+
+            {/* Labs */}
 
             <li>
 
@@ -92,10 +92,12 @@ function Sidebar() {
                 className="labs-btn"
                 onClick={() => setLabs(!labs)}
               >
-
                 <span>
+
                   <FaFlask />
+
                   Labs
+
                 </span>
 
                 <FaChevronDown
@@ -110,46 +112,129 @@ function Sidebar() {
 
               <ul className="submenu">
 
-                <li>SQL Injection</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    SQL Injection
+                  </NavLink>
+                </li>
 
-                <li>XSS</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    XSS
+                  </NavLink>
+                </li>
 
-                <li>CSRF</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    CSRF
+                  </NavLink>
+                </li>
 
-                <li>IDOR</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    IDOR
+                  </NavLink>
+                </li>
 
-                <li>SSRF</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    SSRF
+                  </NavLink>
+                </li>
 
-                <li>Command Injection</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    Command Injection
+                  </NavLink>
+                </li>
 
-                <li>File Upload</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    File Upload
+                  </NavLink>
+                </li>
 
-                <li>Broken Authentication</li>
+                <li>
+                  <NavLink
+                    to="/labs"
+                    onClick={closeSidebar}
+                  >
+                    Broken Authentication
+                  </NavLink>
+                </li>
 
               </ul>
 
             )}
 
-            <li>
-              <FaChartLine />
-              Progress
-            </li>
+            {/* Progress */}
 
             <li>
-              <FaNewspaper />
-              Cyber News
+
+              <NavLink
+                to="/progress"
+                onClick={closeSidebar}
+              >
+                <FaChartLine />
+                Progress
+              </NavLink>
+
             </li>
 
+            {/* News */}
+
             <li>
-              <FaInfoCircle />
-              About
+
+              <NavLink
+                to="/news"
+                onClick={closeSidebar}
+              >
+                <FaNewspaper />
+                Cyber News
+              </NavLink>
+
+            </li>
+
+            {/* About */}
+
+            <li>
+
+              <NavLink
+                to="/about"
+                onClick={closeSidebar}
+              >
+                <FaInfoCircle />
+                About
+              </NavLink>
+
             </li>
 
           </ul>
 
         </div>
 
-        {/* Bottom Buttons */}
+        {/* Bottom */}
 
         <div className="bottom">
 
@@ -165,26 +250,26 @@ function Sidebar() {
           >
             {theme === "dark"
               ? <FaSun />
-              : <FaMoon />
-            }
+              : <FaMoon />}
 
             {theme === "dark"
               ? "Light Mode"
               : "Dark Mode"}
+
           </button>
 
-          <button className="login-btn">
-
+          <NavLink
+            to="/login"
+            className="login-btn"
+            onClick={closeSidebar}
+          >
             <FaSignInAlt />
-
             Login
-
-          </button>
+          </NavLink>
 
         </div>
 
       </aside>
-
     </>
   );
 }
