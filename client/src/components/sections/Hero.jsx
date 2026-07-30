@@ -1,81 +1,63 @@
 import "./Hero.css";
-import heroImage from "../../assets/hero.png";
-
-import {
-  FaArrowRight,
-  FaBookOpen,
-  FaShieldAlt,
-  FaUsers,
-} from "react-icons/fa";
+import { FaArrowRight, FaBookOpen, FaCheckCircle } from "react-icons/fa";
 
 function Hero() {
   return (
     <section className="hero">
-      <div className="container hero-container">
 
-        {/* Left Side */}
+      <div className="container hero-content">
 
-        <div className="hero-content">
+        <span className="hero-badge">
+          OWASP TOP 10 LEARNING PLATFORM
+        </span>
 
-          <span className="hero-badge">
-            <FaShieldAlt />
-            OWASP Top 10 Learning Platform
-          </span>
+        <h1>
+          Learn <span>Web Security</span>
+          <br />
+          Through Interactive Labs
+        </h1>
 
-          <h1>
-            Master <span>Web Security</span>
-            <br />
-            Through Interactive Labs
-          </h1>
+        <p>
+          Master web vulnerabilities through practical exercises,
+          interactive challenges, quizzes, and secure coding practices
+          designed for beginners and aspiring cybersecurity professionals.
+        </p>
 
-          <p>
-            SecureLearn is an interactive MERN-based cybersecurity platform
-            where students can practice web vulnerabilities, understand attack
-            techniques, and learn secure coding in a safe environment.
-          </p>
+        <div className="hero-buttons">
 
-          <div className="hero-buttons">
-            <button className="primary-btn">
-              Get Started
-              <FaArrowRight />
-            </button>
+          <button className="primary-btn">
+            Get Started
+            <FaArrowRight />
+          </button>
 
-            <button className="secondary-btn">
-              <FaBookOpen />
-              Explore Labs
-            </button>
-          </div>
-
-          <div className="hero-stats">
-
-            <div>
-              <h3>10+</h3>
-              <span>OWASP Labs</span>
-            </div>
-
-            <div>
-              <h3>20+</h3>
-              <span>Learning Modules</span>
-            </div>
-
-            <div>
-              <h3>
-                <FaUsers />
-              </h3>
-              <span>Student Progress</span>
-            </div>
-
-          </div>
+          <button className="secondary-btn">
+            <FaBookOpen />
+            Explore Labs
+          </button>
 
         </div>
 
-        {/* Right Side */}
+        <div className="hero-features">
 
-        <div className="hero-image">
-          <img src={heroImage} alt="SecureLearn Hero" />
+          <div>
+            <FaCheckCircle />
+            <span>10 Interactive Labs</span>
+          </div>
+
+          <div>
+            <FaCheckCircle />
+            <span>Progress Tracking</span>
+          </div>
+
+          <div>
+            <FaCheckCircle />
+            <span>Beginner Friendly</span>
+          </div>
+
         </div>
 
       </div>
+
     </section>
   );
 }
