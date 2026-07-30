@@ -20,7 +20,7 @@ import "./Sidebar.css";
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
-  const [labs, setLabs] = useState(false);
+  const [labsOpen, setLabsOpen] = useState(false);
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "dark"
@@ -37,7 +37,7 @@ function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
+      {/* Mobile Toggle */}
 
       <button
         className="mobile-btn"
@@ -48,7 +48,7 @@ function Sidebar() {
 
       {/* Sidebar */}
 
-      <aside className={open ? "sidebar show" : "sidebar"}>
+      <aside className={`sidebar ${open ? "show" : ""}`}>
 
         {/* Logo */}
 
@@ -72,16 +72,14 @@ function Sidebar() {
             {/* Home */}
 
             <li>
-
               <NavLink
                 to="/"
                 end
                 onClick={closeSidebar}
               >
                 <FaHome />
-                Home
+                <span>Home</span>
               </NavLink>
-
             </li>
 
             {/* Labs */}
@@ -90,31 +88,26 @@ function Sidebar() {
 
               <button
                 className="labs-btn"
-                onClick={() => setLabs(!labs)}
+                onClick={() => setLabsOpen(!labsOpen)}
               >
                 <span>
-
                   <FaFlask />
-
                   Labs
-
                 </span>
 
                 <FaChevronDown
-                  className={labs ? "rotate" : ""}
+                  className={labsOpen ? "rotate" : ""}
                 />
-
               </button>
 
             </li>
 
-            {labs && (
-
+            {labsOpen && (
               <ul className="submenu">
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/sql-injection"
                     onClick={closeSidebar}
                   >
                     SQL Injection
@@ -123,7 +116,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/xss"
                     onClick={closeSidebar}
                   >
                     XSS
@@ -132,7 +125,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/csrf"
                     onClick={closeSidebar}
                   >
                     CSRF
@@ -141,7 +134,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/idor"
                     onClick={closeSidebar}
                   >
                     IDOR
@@ -150,7 +143,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/ssrf"
                     onClick={closeSidebar}
                   >
                     SSRF
@@ -159,7 +152,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/command-injection"
                     onClick={closeSidebar}
                   >
                     Command Injection
@@ -168,7 +161,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/file-upload"
                     onClick={closeSidebar}
                   >
                     File Upload
@@ -177,7 +170,7 @@ function Sidebar() {
 
                 <li>
                   <NavLink
-                    to="/labs"
+                    to="/labs/broken-authentication"
                     onClick={closeSidebar}
                   >
                     Broken Authentication
@@ -185,56 +178,49 @@ function Sidebar() {
                 </li>
 
               </ul>
-
             )}
 
             {/* Progress */}
 
             <li>
-
               <NavLink
                 to="/progress"
                 onClick={closeSidebar}
               >
                 <FaChartLine />
-                Progress
+                <span>Progress</span>
               </NavLink>
-
             </li>
 
-            {/* News */}
+            {/* Cyber News */}
 
             <li>
-
               <NavLink
                 to="/news"
                 onClick={closeSidebar}
               >
                 <FaNewspaper />
-                Cyber News
+                <span>Cyber News</span>
               </NavLink>
-
             </li>
 
             {/* About */}
 
             <li>
-
               <NavLink
                 to="/about"
                 onClick={closeSidebar}
               >
                 <FaInfoCircle />
-                About
+                <span>About</span>
               </NavLink>
-
             </li>
 
           </ul>
 
         </div>
 
-        {/* Bottom */}
+        {/* Bottom Buttons */}
 
         <div className="bottom">
 
@@ -255,7 +241,6 @@ function Sidebar() {
             {theme === "dark"
               ? "Light Mode"
               : "Dark Mode"}
-
           </button>
 
           <NavLink
