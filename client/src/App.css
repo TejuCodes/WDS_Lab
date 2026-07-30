@@ -1,1 +1,14 @@
- 
+.main-content{
+    margin-left:240px;
+    min-height:100vh;
+    padding:50px;
+}
+
+@media(max-width:992px){
+
+.main-content{
+    margin-left:0;
+    padding:90px 25px 40px;
+}
+
+}

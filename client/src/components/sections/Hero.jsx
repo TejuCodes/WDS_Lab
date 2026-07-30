@@ -1,65 +1,94 @@
 import "./Hero.css";
-import { FaArrowRight, FaBookOpen, FaCheckCircle } from "react-icons/fa";
+import {
+FaArrowRight,
+FaBookOpen,
+FaCheckCircle
+} from "react-icons/fa";
 
-function Hero() {
-  return (
-    <section className="hero">
+function Hero(){
 
-      <div className="container hero-content">
+return(
 
-        <span className="hero-badge">
-          OWASP TOP 10 LEARNING PLATFORM
-        </span>
+<section className="hero">
 
-        <h1>
-          Learn <span>Web Security</span>
-          <br />
-          Through Interactive Labs
-        </h1>
+<div className="hero-content">
 
-        <p>
-          Master web vulnerabilities through practical exercises,
-          interactive challenges, quizzes, and secure coding practices
-          designed for beginners and aspiring cybersecurity professionals.
-        </p>
+<span className="badge">
 
-        <div className="hero-buttons">
+OWASP TOP 10 LEARNING PLATFORM
 
-          <button className="primary-btn">
-            Get Started
-            <FaArrowRight />
-          </button>
+</span>
 
-          <button className="secondary-btn">
-            <FaBookOpen />
-            Explore Labs
-          </button>
+<h1>
 
-        </div>
+Learn <span>Web Security</span>
 
-        <div className="hero-features">
+<br/>
 
-          <div>
-            <FaCheckCircle />
-            <span>10 Interactive Labs</span>
-          </div>
+Through Interactive Labs
 
-          <div>
-            <FaCheckCircle />
-            <span>Progress Tracking</span>
-          </div>
+</h1>
 
-          <div>
-            <FaCheckCircle />
-            <span>Beginner Friendly</span>
-          </div>
+<p>
 
-        </div>
+Practice SQL Injection, XSS, CSRF, IDOR, SSRF and more through interactive labs built for beginners.
 
-      </div>
+</p>
 
-    </section>
-  );
+<div className="hero-buttons">
+
+<button className="primary">
+
+Get Started
+
+<FaArrowRight/>
+
+</button>
+
+<button className="secondary">
+
+<FaBookOpen/>
+
+Explore Labs
+
+</button>
+
+</div>
+
+<div className="features">
+
+<div>
+
+<FaCheckCircle/>
+
+10 Labs
+
+</div>
+
+<div>
+
+<FaCheckCircle/>
+
+Progress Tracking
+
+</div>
+
+<div>
+
+<FaCheckCircle/>
+
+Certificates
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+);
+
 }
 
 export default Hero;
