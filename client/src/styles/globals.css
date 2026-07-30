@@ -11,6 +11,7 @@ body{
     background:var(--bg-primary);
     color:var(--text-primary);
     font-family:"Inter",sans-serif;
+        transition:.35s;
     overflow-x:hidden;
     
 }
