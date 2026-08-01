@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import {
   FaShieldAlt,
   FaHome,
+  FaUserCircle,
   FaFlask,
   FaChartLine,
   FaNewspaper,
@@ -83,7 +84,15 @@ function Sidebar() {
             </li>
 
             {/* Labs */}
-
+<li>
+  <NavLink
+    to="/dashboard"
+    onClick={closeSidebar}
+  >
+    <FaUserCircle />
+    Dashboard
+  </NavLink>
+</li>
             <li>
 
               <button

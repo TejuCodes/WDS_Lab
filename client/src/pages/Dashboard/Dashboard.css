@@ -1,0 +1,491 @@
+/* ====================================
+   DASHBOARD
+==================================== */
+
+.dashboard{
+
+margin-left:240px;
+
+padding:40px;
+
+min-height:100vh;
+
+background:var(--bg-primary);
+
+color:var(--text-primary);
+
+}
+
+/* ====================================
+   HEADER
+==================================== */
+
+.dashboard-header{
+
+margin-bottom:35px;
+
+}
+
+.dashboard-header h1{
+
+font-size:2.3rem;
+
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.dashboard-header p{
+
+color:var(--text-secondary);
+
+font-size:.95rem;
+
+}
+
+/* ====================================
+   CARD
+==================================== */
+
+.dashboard-card{
+
+background:rgba(255,255,255,.04);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+padding:28px;
+
+margin-bottom:25px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.35);
+
+transition:.35s;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+/* Cyber Red Glow */
+
+.dashboard-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:2px;
+
+background:linear-gradient(
+90deg,
+transparent,
+#DC2626,
+transparent
+);
+
+opacity:.8;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-5px);
+
+border-color:rgba(220,38,38,.35);
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.45),
+
+0 0 25px rgba(220,38,38,.12);
+
+}
+
+/* ====================================
+   CARD TITLE
+==================================== */
+
+.card-title{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:25px;
+
+}
+
+.card-title svg{
+
+font-size:1.4rem;
+
+color:var(--primary-color);
+
+}
+
+.card-title h2{
+
+font-size:1.3rem;
+
+font-weight:600;
+
+}
+
+/* ====================================
+   PROFILE
+==================================== */
+
+.profile-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+.profile-item{
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.05);
+
+border-radius:18px;
+
+padding:20px;
+
+transition:.3s;
+
+}
+
+.profile-item:hover{
+
+background:rgba(220,38,38,.08);
+
+border-color:rgba(220,38,38,.3);
+
+}
+
+.profile-item span{
+
+display:block;
+
+font-size:.85rem;
+
+color:var(--text-secondary);
+
+margin-bottom:10px;
+
+}
+
+.profile-item h3{
+
+font-size:1.1rem;
+
+font-weight:600;
+
+}
+
+/* ====================================
+   ACCOUNT BUTTONS
+==================================== */
+
+.account-buttons{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+.dashboard-btn{
+
+padding:14px 24px;
+
+border:none;
+
+border-radius:14px;
+
+background:rgba(255,255,255,.05);
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.dashboard-btn:hover{
+
+background:#DC2626;
+
+transform:translateY(-3px);
+
+}
+
+/* ====================================
+   SUMMARY
+==================================== */
+
+.summary-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+.summary-box{
+
+background:rgba(255,255,255,.03);
+
+border:1px solid rgba(255,255,255,.05);
+
+border-radius:18px;
+
+padding:30px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.summary-box:hover{
+
+background:rgba(220,38,38,.08);
+
+border-color:#DC2626;
+
+}
+
+.summary-box svg{
+
+font-size:2rem;
+
+color:#DC2626;
+
+margin-bottom:15px;
+
+}
+
+.summary-box h3{
+
+font-size:2rem;
+
+margin-bottom:8px;
+
+}
+
+.summary-box p{
+
+color:var(--text-secondary);
+
+}
+
+/* ====================================
+   GRAPH
+==================================== */
+
+.graph-placeholder{
+
+height:320px;
+
+border:2px dashed rgba(220,38,38,.25);
+
+border-radius:18px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.graph-placeholder p{
+
+font-size:1.2rem;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+}
+
+.graph-placeholder small{
+
+color:var(--text-secondary);
+
+}
+
+/* ====================================
+   ACTIVITY
+==================================== */
+
+.activity-list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.activity-item{
+
+padding:18px;
+
+border-radius:15px;
+
+background:rgba(255,255,255,.03);
+
+border-left:4px solid #DC2626;
+
+transition:.3s;
+
+}
+
+.activity-item:hover{
+
+background:rgba(220,38,38,.08);
+
+}
+
+.activity-item h4{
+
+margin-bottom:6px;
+
+}
+
+.activity-item small{
+
+color:var(--text-secondary);
+
+}
+
+/* ====================================
+   LOGOUT
+==================================== */
+
+.logout-btn{
+
+width:100%;
+
+height:55px;
+
+border:none;
+
+border-radius:15px;
+
+background:#DC2626;
+
+color:white;
+
+font-size:1rem;
+
+font-weight:600;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.logout-btn:hover{
+
+background:#B91C1C;
+
+transform:translateY(-3px);
+
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
+
+@media(max-width:992px){
+
+.dashboard{
+
+margin-left:0;
+
+padding:25px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard-header h1{
+
+font-size:1.8rem;
+
+}
+
+.dashboard-card{
+
+padding:22px;
+
+}
+
+.account-buttons{
+
+flex-direction:column;
+
+}
+
+.dashboard-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+}
