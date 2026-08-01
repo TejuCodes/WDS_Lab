@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import "../SQLInjection/SQLInjection.css";
 
-// ----- DATA (expanded payloads) -----
 const FAKE_USERS = [
   { id: 1, username: "admin", password: "P@ssw0rd!", role: "administrator" },
   { id: 2, username: "guest", password: "guest123", role: "viewer" },
@@ -12,7 +11,6 @@ const FAKE_LEAK_TABLE = [
   { id: 2, card: "5500-xxxx-xxxx-5678", note: "sample-only, not real" },
 ];
 
-// ---- EXPANDED PAYLOAD LIBRARY ----
 
 const DIFFICULTIES = [
   {
@@ -88,31 +86,24 @@ const QUIZ = [
   },
 ];
 
-// ----- HELPERS (unchanged) -----
 function escapeSingleQuotesOnly(str) {
   return str.replace(/'/g, "\\'");
 }
-
 function looksLikeTautology(input) {
   return /('|")\s*or\s*('|")?\s*1\s*=\s*1|'\s*or\s*'1'\s*=\s*'1|"\s*or\s*"1"\s*=\s*"1/i.test(input);
 }
-
 function looksLikeCommentBypass(input) {
   return /^(admin|guest)\s*('|")\s*(--|#|\/\*)/i.test(input.trim());
 }
-
 function looksLikeUnion(input) {
   return /union\s+select/i.test(input);
 }
-
 function looksLikeStacked(input) {
   return /;\s*drop\s+table|;\s*delete\s+from/i.test(input);
 }
-
 function looksLikeBlind(input) {
   return /and\s+1\s*=\s*[12]--|sleep\s*\(/i.test(input);
 }
-
 function containsRawQuote(input) {
   return /['"]/.test(input);
 }
@@ -184,8 +175,6 @@ function runSimulatedLogin(username, password, difficulty) {
       leak: null,
     };
   }
-
-  // EASY
   const query = `SELECT * FROM users WHERE username='${username}' AND password='${password}'`;
   if (looksLikeStacked(combined)) {
     return {
@@ -235,7 +224,6 @@ function runSimulatedLogin(username, password, difficulty) {
     leak: null,
   };
 }
-
 const VERDICT_META = {
   SECURE_LOGIN: { label: "ACCESS GRANTED — VALID LOGIN", tone: "safe" },
   ACCESS_DENIED: { label: "ACCESS DENIED", tone: "neutral" },
@@ -245,18 +233,17 @@ const VERDICT_META = {
   INJECTION_SUCCESS_LEAK: { label: "INJECTION SUCCESS — DATA LEAK", tone: "danger" },
   INJECTION_SUCCESS_DESTRUCTIVE: { label: "INJECTION SUCCESS — DESTRUCTIVE", tone: "danger" },
 };
-
 function isInjectionSuccess(verdict) {
   return verdict && verdict.startsWith("INJECTION_SUCCESS");
 }
 
-// ----- EASTER EGG -----
+
 function EasterEgg({ onClose }) {
   return (
     <div className="egg-overlay" role="dialog">
       <div className="egg-content">
         <p className="egg-glitch">ACCESS GRANTED</p>
-        <p className="egg-sub">🥚 you found the injection easter egg — nice work, hacker.</p>
+        <p className="egg-sub">🥚 you found the injection easter egg.</p>
         <button className="btn btn-primary" onClick={onClose}>
           close [x]
         </button>
@@ -265,7 +252,6 @@ function EasterEgg({ onClose }) {
   );
 }
 
-// ----- MAIN COMPONENT -----
 export default function SqlInjectionLab() {
   const [difficulty, setDifficulty] = useState(null);
   const [username, setUsername] = useState("");
@@ -324,8 +310,7 @@ export default function SqlInjectionLab() {
       {showEgg && <EasterEgg onClose={() => setShowEgg(false)} />}
 
       <header className="lab-header">
-        <div className="stamp">CLASSIFIED · TRAINING</div>
-        <p className="eyebrow">OWASP A03:2021 — INJECTION</p>
+        <p className="eyebrow">OWASP <b>A05:2025 - Injection</b></p>
         <h1>SQL Injection Range</h1>
         <p className="lede">
           A simulated login form to practice SQL injection techniques and understand why
@@ -333,7 +318,6 @@ export default function SqlInjectionLab() {
         </p>
       </header>
 
-      {/* Step 1 — Difficulty */}
       <section className="panel">
         <h2>
           <span className="step-no">01</span> Choose difficulty
@@ -356,7 +340,6 @@ export default function SqlInjectionLab() {
         {currentDiff && <p className="diff-blurb">{currentDiff.blurb}</p>}
       </section>
 
-      {/* Step 2 — Login form (redesigned as a card) */}
       <section className={`panel ${!difficulty ? "panel-disabled" : ""}`}>
         <h2>
           <span className="step-no">02</span> Login
@@ -406,7 +389,6 @@ export default function SqlInjectionLab() {
         )}
       </section>
 
-      {/* Step 3 — Result */}
       <section className={`panel ${!result ? "panel-disabled" : ""}`}>
         <h2>
           <span className="step-no">03</span> Result
@@ -488,8 +470,6 @@ export default function SqlInjectionLab() {
           </div>
         </div>
       </section>
-
-      {/* Step 5 — Quiz */}
       <section className="panel">
         <h2>
           <span className="step-no">05</span> Quiz

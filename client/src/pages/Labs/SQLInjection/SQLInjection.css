@@ -80,18 +80,6 @@
   transition: background 0.3s, border 0.3s;
 }
 
-.stamp {
-  display: inline-block;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  color: var(--primary-color);
-  border: 1.5px solid var(--primary-color);
-  padding: 4px 10px;
-  border-radius: 30px;
-  opacity: 0.85;
-  margin-bottom: 12px;
-}
 
 .eyebrow {
   font-family: "IBM Plex Mono", monospace;
@@ -702,10 +690,6 @@
 
   .panel h2 {
     font-size: 1.4rem;
-  }
-
-  .stamp {
-    font-size: 0.6rem;
   }
 
   .payload-grid {
