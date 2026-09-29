@@ -1,0 +1,1079 @@
+
+
+.lead {
+  font-size: 1.04rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+.section {
+  margin-top: 1.6rem;
+}
+.section__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border-bottom: var(--bw) solid var(--ink);
+  padding-bottom: 0.6rem;
+}
+.section__note {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+
+.sub {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  font-weight: 900;
+  margin: 1.4rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.card__icon {
+  font-size: 1.4rem;
+  color: var(--pop-ink);
+  margin-bottom: 0.7rem;
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--pop);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.bullets {
+  list-style: none;
+  margin: 0.4rem 0 1rem;
+  padding: 0;
+}
+.bullets li {
+  position: relative;
+  padding: 0.45rem 0 0.45rem 1.6rem;
+  color: var(--text-dim);
+  border-bottom: 2px dashed var(--surface-2);
+}
+.bullets li:last-child {
+  border-bottom: 0;
+}
+
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 10px;
+  height: 10px;
+  background: var(--pop);
+  border: 2px solid var(--ink);
+}
+.bullets--numbered {
+  counter-reset: step;
+}
+.bullets--numbered li {
+  counter-increment: step;
+  padding-left: 2.4rem;
+}
+.bullets--numbered li::before {
+  content: counter(step);
+  top: 0.5rem;
+  width: auto;
+  height: auto;
+  background: var(--ink);
+  color: var(--on-ink);
+  border: 0;
+  font-family: var(--display);
+  font-size: 0.7rem;
+  font-weight: 900;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.link-list {
+  list-style: none;
+  margin: 0.3rem 0 1rem;
+  padding: 0;
+}
+.link-list li {
+  padding: 0.4rem 0.5rem;
+  border: 2px solid var(--ink);
+  background: var(--surface);
+  margin-bottom: 0.4rem;
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+/* The hover belongs on the anchor, not the `li`. Not every row in
+   these lists is a link - some are plain reference text - so
+   highlighting the row on hover implied a click target that was not
+   there. */
+.link-list a {
+  color: var(--text);
+  text-decoration: none;
+}
+.link-list a:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
+}
+.link-list__id {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.05rem 0.4rem;
+  margin-right: 0.3rem;
+}
+
+.hero {
+  padding: 2.6rem 2.4rem;
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard-lg);
+  animation: pageIn 0.3s steps(5, end) both;
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-size: 2.6rem;
+  max-width: 22ch;
+  color: var(--pop-ink);
+  line-height: 1.02;
+}
+.hero .lead {
+  font-size: 1.08rem;
+  max-width: 64ch;
+  color: var(--pop-ink);
+  font-weight: 500;
+}
+.hero .eyebrow {
+  background: var(--ink);
+  color: var(--on-ink);
+  box-shadow: 4px 4px 0 var(--shadow-c);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.hero__safety {
+  margin-top: 1.4rem;
+  display: inline-block;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: var(--display);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 0.8rem;
+  border: 3px solid var(--ink);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0.4rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 47px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--ink);
+}
+
+.timeline__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+.timeline__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.timeline__year {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: var(--pop);
+  color: var(--pop-ink);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard-sm);
+  padding: 0.3rem 0.2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.timeline__dot {
+  width: 20px;
+  height: 20px;
+  background: var(--bg);
+  border: 4px solid var(--ink);
+}
+.timeline__row.is-open .timeline__year {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.timeline__row.is-open .timeline__dot {
+  background: var(--magenta);
+}
+
+.timeline__card {
+  box-shadow: var(--shadow-hard);
+}
+.timeline__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  border-bottom: var(--bw) solid var(--ink);
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+.timeline__title {
+  margin-bottom: 0.25rem;
+}
+.timeline__summary {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.timeline__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.timeline__items {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.5rem;
+  counter-reset: none;
+}
+.timeline__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border: 2px solid var(--ink);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: transform 0.1s steps(2, end), background-color 0.1s linear;
+}
+.timeline__item:hover {
+  background: var(--primary-soft);
+  color: var(--text);
+  text-decoration: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--shadow-c);
+}
+.timeline__id {
+  flex: 0 0 auto;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+}
+.timeline__item-title {
+  flex: 1;
+}
+.timeline__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  border-top: 2px dashed var(--ink);
+  padding-top: 0.9rem;
+}
+
+.timeline-mini {
+  list-style: none;
+  margin: 0.4rem 0 1rem;
+  padding: 0;
+  font-size: 0.88rem;
+}
+.timeline-mini li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0.6rem;
+  border: 2px solid var(--ink);
+  margin-bottom: 0.4rem;
+  background: var(--surface);
+}
+.timeline-mini li.is-current {
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+.timeline-mini li.is-current a {
+  color: var(--pop-ink);
+}
+.timeline-mini--wide {
+  font-size: 0.92rem;
+}
+.timeline-mini--wide li {
+  justify-content: flex-start;
+}
+
+.year-panel {
+  background: var(--surface);
+  border-width: var(--bw-thick);
+  box-shadow: var(--shadow-hard-lg);
+}
+.year-panel > .section__head .eyebrow {
+  margin-bottom: 0.4rem;
+}
+
+/* .search, .search__input, .search__icon, .muted and .module-chip all
+   moved to global.css: they are shared, not page-specific. */
+
+.detail {
+  display: block;
+}
+.detail__header {
+  margin: 1.2rem 0 1.6rem;
+  border-left: 12px solid var(--ink);
+  padding-left: 1.1rem;
+}
+.detail__title {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.detail__id {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border: 3px solid var(--ink);
+}
+.detail__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+.code__file {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.walkthrough {
+  background: var(--danger-soft);
+  border-left: 9px solid var(--danger);
+  margin-top: 1rem;
+}
+.walkthrough .bullets li::before {
+  background: var(--danger);
+}
+
+.complete {
+  background: var(--pop);
+  color: var(--pop-ink);
+  border-width: var(--bw-thick);
+  box-shadow: var(--shadow-hard-lg);
+}
+.complete h2,
+.complete p {
+  color: var(--pop-ink);
+}
+.complete .btn {
+  background: var(--surface);
+  color: var(--text);
+}
+.complete .btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.code {
+  margin: 1.1rem 0;
+  background: var(--code-bg);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+}
+
+.code--danger {
+  border-top: 10px solid var(--danger);
+}
+.code--safe {
+  border-top: 10px solid var(--success);
+}
+.code__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 3px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--code-text);
+  background: var(--code-bg);
+}
+.code__lang {
+  background: var(--pop);
+  color: var(--pop-ink);
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  text-transform: uppercase;
+}
+.code__label {
+  font-family: var(--body);
+  font-weight: 700;
+  color: var(--code-text);
+}
+.code__copy {
+  margin-left: auto;
+  background: var(--code-text);
+  color: var(--code-bg);
+  border: 2px solid var(--code-border);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: var(--display);
+  cursor: pointer;
+}
+.code__copy:hover {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+/* No .tok-* rules here on purpose. CodeBlock deliberately ships
+   without a syntax-highlighting library (see the note in that file),
+   so nothing ever emits token spans for these to style. */
+.code__body {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--code-text);
+}
+
+.quiz {
+  background: var(--surface);
+}
+.quiz__q {
+  border-top: var(--bw) solid var(--ink);
+  padding-top: 1.1rem;
+  margin-top: 1.4rem;
+}
+.quiz__q:first-of-type {
+  border-top: 0;
+  margin-top: 0.5rem;
+}
+.quiz__prompt {
+  text-transform: none;
+  font-family: var(--body);
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+.quiz__options {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.7rem 0 0;
+}
+.quiz__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border: var(--bw) solid var(--ink);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end),
+    background-color 0.1s linear;
+}
+.quiz__option:hover:not(:disabled) {
+  background: var(--pop);
+  color: var(--pop-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow-c);
+}
+.quiz__option.is-selected {
+  background: var(--primary-soft);
+  color: var(--text);
+  border-color: var(--ink);
+  box-shadow: 5px 5px 0 var(--shadow-c);
+}
+.quiz__option.is-correct {
+  background: var(--success);
+  color: var(--pop-ink);
+  border-color: var(--ink);
+  animation: none;
+}
+.quiz__option.is-wrong {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--ink);
+  animation: shake 0.35s steps(4, end);
+}
+.quiz__option:disabled {
+  cursor: default;
+}
+.quiz__letter {
+  flex: 0 0 1.7rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+/* The letter badge inverts onto the saturated correct/wrong fill, so it
+   has to keep the ink-block pairing rather than inherit --surface. */
+.quiz__option.is-correct .quiz__letter,
+.quiz__option.is-wrong .quiz__letter {
+  background: var(--on-ink);
+  color: var(--ink);
+}
+.quiz__feedback {
+  margin-top: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  border: 3px solid var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.quiz__feedback.is-good {
+  background: var(--success-soft);
+  border-left: 9px solid var(--success);
+}
+.quiz__feedback.is-bad {
+  background: var(--danger-soft);
+  border-left: 9px solid var(--danger);
+}
+.quiz__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.3rem;
+  border-top: var(--bw) solid var(--ink);
+  padding-top: 1.1rem;
+}
+.quiz__counter {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.quiz__score {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 0.5rem 0.8rem;
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+.quiz__score.is-good {
+  background: var(--success);
+  color: var(--pop-ink);
+}
+.quiz__score.is-bad {
+  background: var(--danger);
+  color: #fff;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-7px);
+  }
+  50% {
+    transform: translateX(7px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+}
+
+.lab {
+  background: var(--surface);
+}
+.lab__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+  border-bottom: var(--bw) solid var(--ink);
+  padding-bottom: 0.7rem;
+}
+.lab__head h2 {
+  margin: 0;
+}
+
+.lab__hints {
+  margin-top: 1.1rem;
+  border: var(--bw) solid var(--ink);
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+.lab__hints summary {
+  cursor: pointer;
+  padding: 0.65rem 0.9rem;
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.lab__hints summary::-webkit-details-marker {
+  display: none;
+}
+.lab__hints summary::after {
+  content: "\25BC";
+  margin-left: auto;
+  font-size: 0.7rem;
+}
+.lab__hints[open] summary {
+  border-bottom: var(--bw) solid var(--ink);
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.lab__hints p {
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  color: var(--pop-ink);
+  font-weight: 600;
+}
+.lab__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+.lab__solution {
+  margin-top: 1.3rem;
+  border: var(--bw) solid var(--ink);
+  padding: 1.1rem 1.2rem;
+  background: var(--success-soft);
+  box-shadow: var(--shadow-hard);
+  animation: pageIn 0.25s steps(5, end) both;
+}
+.lab__solution code {
+  color: var(--success);
+  background: transparent;
+  border: 0;
+  font-weight: 700;
+}
+
+.history {
+  border-width: var(--bw-thick);
+  box-shadow: var(--shadow-hard-lg);
+}
+.history__cols > div {
+  border: 2px solid var(--ink);
+  padding: 0.8rem 0.9rem;
+  background: var(--surface-2);
+}
+.history__cols .sub {
+  margin-top: 0;
+}
+.history__link {
+  margin-top: 1rem;
+  border-top: var(--bw) solid var(--ink);
+  padding-top: 0.9rem;
+}
+
+.progress-card {
+  display: block;
+}
+.progress-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.1rem;
+  border-top: var(--bw) solid var(--ink);
+  padding-top: 1.1rem;
+}
+
+.progress-bar {
+  height: 26px;
+  background: var(--surface-2);
+  border: var(--bw) solid var(--ink);
+  overflow: hidden;
+  margin: 0.8rem 0;
+  box-shadow: var(--shadow-hard-sm);
+}
+.progress-bar__fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--pop) 0 8px,
+    var(--ink) 8px 16px
+  );
+  border-right: 3px solid var(--ink);
+  transition: width 0.4s steps(10, end);
+}
+
+.activity-list {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+}
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 2px dashed var(--ink);
+  font-size: 0.88rem;
+  animation: fadeIn 0.2s linear both;
+}
+.activity:last-child {
+  border-bottom: 0;
+}
+.activity__title {
+  color: var(--text-dim);
+  flex: 1;
+  font-weight: 600;
+}
+.activity__title a {
+  color: var(--text-dim);
+}
+.activity__title a:hover {
+  color: var(--accent-strong);
+}
+.activity__date {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.source-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1.05rem;
+  background: var(--surface);
+  border: var(--bw) solid var(--ink);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.12s steps(2, end), box-shadow 0.12s steps(2, end),
+    background-color 0.1s linear;
+}
+.source-card:hover {
+  background: var(--pop);
+  color: var(--pop-ink);
+  text-decoration: none;
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--shadow-c);
+}
+.source-card:hover .muted {
+  color: var(--pop-ink);
+}
+.source-card strong {
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 900px) {
+  .hero {
+    padding: 1.8rem 1.3rem;
+  }
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+  .hero .lead {
+    font-size: 0.98rem;
+  }
+  
+  .timeline::before {
+    display: none;
+  }
+  .timeline__row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .timeline__marker {
+    flex-direction: row;
+    align-items: center;
+  }
+  .timeline__year {
+    width: auto;
+    padding: 0.25rem 0.8rem;
+  }
+  .detail__header {
+    border-left-width: 8px;
+    padding-left: 0.8rem;
+  }
+  .detail__title {
+    font-size: 1.5rem;
+  }
+  .brut__block--1,
+  .brut__block--2,
+  .brut__block--3,
+  .brut__ring {
+    opacity: 0.5;
+  }
+}
+
+.detail__back {
+  margin-top: 1rem;
+}
+
+/* ============================================================
+ * LIVE CYBER NEWS FEED  (/news)
+ * ------------------------------------------------------------
+ * The feed is the only part of this site driven by live external
+ * data, so it needs a few states the rest of the app does not:
+ * loading, empty, partial and error. Each has its own class and
+ * every one of them says something honest in words, because a
+ * security page that hides its own failures is teaching the wrong
+ * lesson.
+ * ============================================================ */
+
+.feed-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.1rem;
+}
+
+/* A small toggle button, matching the flat outlined style used
+   everywhere else. `chip--on` is the pressed state. */
+.chip {
+  font-family: var(--display);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--ink);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.1s linear, color 0.1s linear;
+}
+.chip:hover {
+  background: var(--surface-2);
+}
+.chip--on {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+
+/* Status lines: loading, empty, and the hard failure. */
+.feed-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 2px dashed var(--ink);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.feed-note--bad {
+  border-style: solid;
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+}
+
+.feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: var(--bw) solid var(--ink);
+  background: var(--surface);
+  max-height: 42rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.feed__item {
+  padding: 0.85rem 1rem;
+  border-bottom: 2px dashed var(--ink);
+  animation: fadeIn 0.2s linear both;
+}
+.feed__item:last-child {
+  border-bottom: 0;
+}
+
+/* A 4px colour bar down the left edge, so the three kinds are
+   distinguishable at a glance without reading the label. */
+.feed__item--advisory {
+  border-left: 8px solid var(--danger);
+}
+.feed__item--news {
+  border-left: 8px solid var(--accent);
+}
+.feed__item--research {
+  border-left: 8px solid var(--info);
+}
+
+.feed__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--display);
+}
+
+/* Reuse the same on-soft pairing the rest of the app uses for
+   tone labels, so contrast is identical in both themes. */
+.feed__kind {
+  padding: 0.1rem 0.4rem;
+  border: 2px solid var(--ink);
+}
+.feed__kind--advisory {
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+}
+.feed__kind--news {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.feed__kind--research {
+  background: var(--info-soft);
+  color: var(--on-soft-info);
+}
+
+.feed__source {
+  color: var(--text-dim);
+}
+.feed__when {
+  margin-left: auto;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.feed__title {
+  margin: 0 0 0.3rem;
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+.feed__title a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 3px solid var(--pop);
+}
+.feed__title a:hover {
+  color: var(--accent-strong);
+  border-bottom-color: var(--accent);
+}
+.feed__ext {
+  margin-left: 0.35rem;
+  font-size: 0.7em;
+  color: var(--text-faint);
+}
+
+.feed__summary {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  max-width: var(--prose-max);
+}
+
+.feed__status {
+  margin: 0.7rem 0 0;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Disclosure blocks for "sources in this feed" and "sources we
+   could not reach". Plain <details> so it works without JS. */
+.feed__unreachable {
+  margin-top: 0.7rem;
+  border: 2px dashed var(--ink);
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+}
+.feed__unreachable summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.feed__unreachable ul {
+  margin: 0.6rem 0 0.2rem;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+}
+.feed__unreachable li {
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .feed {
+    max-height: none;
+  }
+  .feed__when {
+    margin-left: 0;
+  }
+}

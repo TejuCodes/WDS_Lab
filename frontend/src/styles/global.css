@@ -1,0 +1,1406 @@
+
+
+:root {
+  
+  --display: "Archivo Black", "Arial Black", "Arial Bold", Impact, system-ui, sans-serif;
+  --body: "Space Grotesk", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
+
+  
+  --bw: 3px;
+  --bw-thick: 5px;
+  --radius: 0px;
+  --sidebar-width: 284px;
+
+  /* ---------- layout ----------
+     One source of truth for the page grid. --gutter is the horizontal
+     breathing room and --content-max is the measure every page is held
+     to. Having these here is what stops the three stylesheets from
+     drifting apart on container width. */
+  --gutter: 2.4rem;
+  --gutter-sm: 1.1rem;
+  --content-max: 1280px;
+  --prose-max: 74ch;
+
+  /* ---------- vertical rhythm ---------- */
+  --gap-xs: 0.4rem;
+  --gap-sm: 0.6rem;
+  --gap-md: 1rem;
+  --gap-lg: 1.5rem;
+  --gap-xl: 2.2rem;
+}
+
+:root,
+[data-theme="light"] {
+  --ink: #0d0d0d; 
+  --on-ink: #ffe600; 
+  --shadow-c: #0d0d0d; 
+
+  --bg: #f4f1e8;
+  --bg-soft: #ffffff;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #e9e5d8;
+  --border: #0d0d0d;
+  --border-soft: #0d0d0d;
+
+  --text: #0d0d0d;
+  --text-dim: #2c2820;
+  --text-faint: #6d6659;
+
+  --pop: #ffe600; 
+  --pop-ink: #0d0d0d; 
+  --primary: #2f2bff; 
+  --primary-strong: #1712d6;
+  --primary-soft: #e3e1ff;
+  --accent: #ff6a00; 
+  --accent-strong: #b04000; 
+  --accent-soft: #ffe4d1;
+  --magenta: #ff2fb3; 
+  --magenta-soft: #ffd9ef;
+  --cyan: #00c8e6;
+  --lime: #b6f000;
+  --on-primary: #0d0d0d;
+
+  --success: #12a53c;
+  --success-soft: #d8f5e0;
+  --warning: #f0a500;
+  --warning-soft: #ffeec4;
+  --danger: #ff2b2b;
+  --danger-soft: #ffdcdc;
+  --info: #2f2bff;
+  --info-soft: #e3e1ff;
+
+  
+  --on-soft-warning: #7a5200;
+  --on-soft-danger: #a30000;
+  --on-soft-success: #0a5c25;
+  --on-soft-info: #2f2bff;
+
+  --sev-low: #00a8c6;
+  --sev-medium: #e09200;
+  --sev-high: #f06000;
+  --sev-critical: #e01b1b;
+
+  --code-bg: #0d0d0d;
+  --code-text: #f6f4ec;
+  --code-border: #0d0d0d;
+
+  /* decor */
+  --grid-line: rgba(13, 13, 13, 0.1);
+  --dot: rgba(13, 13, 13, 0.16);
+  --stripe: rgba(13, 13, 13, 0.07);
+
+  --shadow: var(--shadow-hard);
+  --shadow-hard: 6px 6px 0 var(--shadow-c);
+  --shadow-hard-sm: 3px 3px 0 var(--shadow-c);
+  --shadow-hard-lg: 10px 10px 0 var(--shadow-c);
+  --focus: #2f2bff;
+  color-scheme: light;
+}
+
+/* ============================================================
+ * DARK THEME
+ * ------------------------------------------------------------
+  * Strictly monochrome: pure black and white with neutral greys in
+  * between. The earlier warm-grey + acid-yellow scheme and the navy
+  * + teal scheme were both too loud; hierarchy now comes only from
+  * lightness steps plus the brutalist borders and hard shadows.
+  * ============================================================ */
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --on-ink: #000000;
+  --shadow-c: #000000;
+
+  /* ------------------------------------------------------------
+   * DARK THEME - STRICT BLACK & WHITE
+   * ------------------------------------------------------------
+   * Monochrome on purpose. No navy, no teal, no tinted greys:
+   * every colour below is a neutral on the #000 -> #fff axis.
+   * Hierarchy comes from lightness steps and from the brutalist
+   * borders/shadows, not from hue.
+   *
+   * Greys are deliberately kept in even ~1.2:1 steps. Each step below
+   * is at least 1.19:1 from its neighbour so surfaces read as
+   * distinct planes - notably --bg-soft (the sidebar) is 1.21:1 off
+   * pure black, so it is visibly a separate panel instead of
+   * dissolving into the page. Text on them clears WCAG AA; the
+   * tightest text pair here is --text-faint on --surface-2 at 5.2:1.
+   *
+   * --pop is pure white: it is the brand bar, the logo plate, the
+   * stat borders and the connector dots. --pop-ink is pure black,
+   * giving 21:1 for the brand text and logo that sit on it.
+   * ------------------------------------------------------------ */
+  --bg: #000000;
+  --bg-soft: #191919;
+  --bg-elevated: #282828;
+  --surface: #282828;
+  --surface-2: #353535;
+  --border: #ffffff;
+  --border-soft: #6e6e6e;
+
+  --text: #ffffff;
+  --text-dim: #d4d4d4;
+  --text-faint: #a8a8a8;
+
+  /* The single loudest token. Pure white, so every accent surface
+     in the app reads as "the highlight" with no colour argument. */
+  --pop: #ffffff;
+  --pop-ink: #000000;
+  --primary: #ffffff;
+  --primary-strong: #ffffff;
+  --primary-soft: #353535;
+  --accent: #ededed;
+  --accent-strong: #ffffff;
+  --accent-soft: #353535;
+  --magenta: #ffffff;
+  --magenta-soft: #353535;
+  --cyan: #ffffff;
+  --lime: #ffffff;
+  --on-primary: #000000;
+
+  /* Status tokens have no hue left, so they lean on lightness to
+     stay ordered: success lightest, danger darkest-but-still-bright.
+     Each still clears AA on its own -soft background (see the
+     --on-soft-* tokens, which are the actual text colours used). */
+  --success: #e6e6e6;
+  --success-soft: #1f1f1f;
+  --warning: #d0d0d0;
+  --warning-soft: #232323;
+  --danger: #ffffff;
+  --danger-soft: #2b2b2b;
+  --info: #ededed;
+  --info-soft: #353535;
+
+  --on-soft-warning: #d0d0d0;
+  --on-soft-danger: #ffffff;
+  --on-soft-success: #e6e6e6;
+  --on-soft-info: #ededed;
+
+  --sev-low: #ededed;
+  --sev-medium: #d0d0d0;
+  --sev-high: #bdbdbd;
+  --sev-critical: #ffffff;
+
+  --code-bg: #000000;
+  --code-text: #ffffff;
+  --code-border: #6e6e6e;
+
+  --grid-line: rgba(255, 255, 255, 0.07);
+  --dot: rgba(255, 255, 255, 0.1);
+  --stripe: rgba(255, 255, 255, 0.04);
+
+  --shadow: var(--shadow-hard);
+  --shadow-hard: 6px 6px 0 var(--shadow-c);
+  --shadow-hard-sm: 3px 3px 0 var(--shadow-c);
+  --shadow-hard-lg: 10px 10px 0 var(--shadow-c);
+  --focus: #ffffff;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16.5px;
+  line-height: 1.65;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  /* Tabular figures keep the reference tables and history columns
+     from shifting when digits change width. */
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   SKIP LINK
+   ------------------------------------------------------------
+   The first focusable thing on every page. It is parked off-screen
+   until it receives keyboard focus, then it slides into the top-left
+   corner. Without it, a keyboard user has to tab through the whole
+   sidebar (24 module links) to reach the content they came for.
+   ============================================================ */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  padding: 0.7rem 1.1rem;
+  background: var(--pop);
+  color: var(--pop-ink);
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard-sm);
+  /* Off-screen rather than display:none, because display:none would
+     remove it from the tab order and it could never be focused. */
+  transform: translateY(-120%);
+  transition: transform 0.12s steps(2, end);
+}
+.skip-link:focus-visible,
+.skip-link:focus {
+  transform: translateY(0);
+  outline: var(--bw) solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Keyboard focus. Kept as an offset ring so a focused control reads as
+   part of this design system rather than a browser default. */
+:focus-visible {
+  outline: var(--bw) solid var(--focus);
+  outline-offset: 2px;
+}
+/* Suppress the ring for pointer users only, never globally. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* <main> is programmatically focusable (tabIndex={-1}) so route
+   changes can move focus there. It must not draw a focus ring on
+   that programmatic move, otherwise every page load looks like an
+   error state. A real click into the page still shows one. */
+.main__content:focus {
+  outline: none;
+}
+
+::selection {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.1s linear, background-color 0.1s linear;
+}
+a:hover {
+  color: var(--accent-strong);
+  text-decoration-thickness: 3px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.12;
+  margin: 0 0 0.6em;
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 2.1rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+h4 {
+  font-size: 0.95rem;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+}
+
+strong {
+  font-weight: 800;
+  color: var(--text);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--mono);
+}
+
+p code,
+li code,
+td code {
+  background: var(--surface-2);
+  border: 2px solid var(--ink);
+  padding: 0.05em 0.35em;
+  font-size: 0.88em;
+  font-weight: 700;
+}
+
+::selection {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-left: 2px solid var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pop);
+  border: 2px solid var(--ink);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.brut {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+.brut > i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.brut__grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) var(--bw), transparent var(--bw)),
+    linear-gradient(to bottom, var(--grid-line) var(--bw), transparent var(--bw));
+  background-size: 46px 46px;
+}
+
+.brut__dots {
+  background-image: radial-gradient(var(--dot) 2px, transparent 2px);
+  background-size: 18px 18px;
+  opacity: 0.75;
+}
+
+.brut__stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--stripe) 0 10px,
+    transparent 10px 22px
+  );
+  inset: 58% 0 0 0;
+  opacity: 0.9;
+}
+
+.brut__block {
+  inset: auto;
+  border: var(--bw) solid var(--ink);
+  box-shadow: 6px 6px 0 var(--shadow-c);
+}
+.brut__block--1 {
+  --rot: 0deg;
+  width: 116px;
+  height: 116px;
+  left: 6%;
+  top: 12%;
+  background: var(--pop);
+  animation: blockStep 9s steps(1, end) infinite;
+}
+.brut__block--2 {
+  --rot: 14deg;
+  width: 78px;
+  height: 78px;
+  right: 8%;
+  top: 30%;
+  background: var(--magenta);
+  animation: blockStep 12s steps(1, end) infinite reverse;
+}
+.brut__block--3 {
+  --rot: -9deg;
+  width: 148px;
+  height: 54px;
+  right: 22%;
+  bottom: 14%;
+  background: var(--cyan);
+  animation: blockStep 15s steps(1, end) infinite;
+}
+
+.brut__ring {
+  --rot: 0deg;
+  inset: auto;
+  left: 12%;
+  bottom: 12%;
+  width: 180px;
+  height: 180px;
+  border: var(--bw-thick) solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  animation: blockStep 11s steps(1, end) infinite reverse;
+}
+
+@keyframes blockStep {
+  0%,
+  49% {
+    transform: translate(0, 0) rotate(var(--rot, 0deg));
+  }
+  50%,
+  100% {
+    transform: translate(16px, -16px) rotate(calc(var(--rot, 0deg) + 8deg));
+  }
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--bg-soft);
+  border-right: var(--bw-thick) solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  z-index: 60;
+  transition: transform 0.25s steps(4, end);
+}
+
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.1rem 1rem 1rem;
+  border-bottom: var(--bw) solid var(--ink);
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+
+.sidebar__logo {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  background: var(--pop);
+  color: var(--pop-ink);
+  border: var(--bw) solid var(--ink);
+  box-shadow: 4px 4px 0 var(--shadow-c);
+  font-size: 1.3rem;
+}
+
+.sidebar__title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.15;
+  font-family: var(--display);
+  text-transform: uppercase;
+  color: var(--pop-ink);
+}
+.sidebar__subtitle {
+  font-size: 0.66rem;
+  color: var(--pop-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.9rem 0.8rem 1rem;
+}
+
+.sidebar__section {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  padding: 0.5rem 0.5rem;
+  font-weight: 900;
+  font-family: var(--display);
+  border-bottom: 3px solid var(--ink);
+  margin: 0 0 0.7rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.6rem;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 3px solid transparent;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: var(--body);
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.1s linear, border-color 0.1s linear;
+}
+/* No `transform: translateX(3px)` on hover any more. Sliding a link
+   sideways makes the whole nav column visibly jump out of alignment
+   against its neighbours the moment the pointer crosses it, which is
+   exactly the "everything moves when I move the mouse" effect. The
+   background + border still confirm the target. */
+.nav-link:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  text-decoration: none;
+  border-color: var(--ink);
+}
+/* React Router's NavLink adds `.active` on the matched link, so this
+   has to key off `.active` - `.is-active` never matched anything and
+   the current-page highlight silently did not render. */
+.nav-link.active {
+  background: var(--ink);
+  color: var(--on-ink);
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 var(--shadow-c);
+}
+.nav-link__icon {
+  font-size: 1rem;
+  width: 20px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 20px;
+  color: currentColor;
+}
+.nav-link__label {
+  flex: 1;
+}
+.nav-link__chevron {
+  font-size: 0.7rem;
+  transition: transform 0.15s steps(3, end);
+  color: currentColor;
+}
+.nav-link__chevron.is-open {
+  transform: rotate(90deg);
+}
+
+/* ---- sidebar indent ladder ----
+   The nav is a three-level tree, and the text of every level has to
+   line up on a deliberate column. These are the measured positions,
+   left edge of the sidebar's own content box:
+
+     top-level link label ....... 2.50rem
+     family group header ....... 2.10rem
+     module link label ......... 3.10rem
+     connector dot ............. 2.50rem  (under the parent label)
+
+   Previously the family header sat at 0.9rem and its module links at
+   1.6rem, so the header was to the LEFT of the items it labelled and
+   the tree read inside-out. The dot is positioned from the sublist
+   padding rather than with a magic negative offset, so changing the
+   indent cannot desynchronise it. */
+.nav-sublist {
+  list-style: none;
+  margin: 0.2rem 0 0.3rem;
+  padding: 0 0 0 1.7rem;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s steps(4, end);
+}
+/* This list holds all 24 modules, so it is taller than a short
+   dropdown. A viewport-relative cap plus its own scrollbar is what
+   keeps the last family reachable on a laptop screen. */
+.nav-sublist.is-open {
+  max-height: 46vh;
+  overflow-y: auto;
+}
+/* One marker per module row, not two.
+   This link used to carry BOTH a 3px `border-left` and the 8px square
+   `::before` dot, so every module showed two parallel vertical marks
+   down the left edge and the tree read as a doubled column. The dot
+   is kept because it is the only element that reflects the
+   active/hover state; the border bar was pure duplication and is
+   gone. The left padding absorbs the 3px so the label stays on the
+   3.10rem column from the ladder above. */
+.nav-sublist .nav-link {
+  font-size: 0.82rem;
+  padding: 0.4rem 0.5rem 0.4rem calc(1.4rem + 3px);
+  border-left-width: 0;
+}
+.nav-sublist .nav-link:hover,
+.nav-sublist .nav-link.active {
+  border-left-width: 0;
+}
+.nav-sublist .nav-link::before {
+  content: "";
+  position: absolute;
+  left: -0.9rem;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border: 2px solid var(--ink);
+  background: var(--pop);
+  transition: background-color 0.1s linear;
+}
+.nav-sublist .nav-link:hover::before,
+.nav-sublist .nav-link.active::before {
+  background: var(--accent);
+}
+
+/* ---- module dropdown internals (moved out of modules.css: the
+       sidebar is app chrome, so it belongs with the rest of the nav) ---- */
+.nav-link__count {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.05rem 0.35rem;
+  border-radius: var(--radius);
+}
+.nav-sublist__group {
+  margin: 0.5rem 0 0;
+}
+/* The family groups nest a second, unclassed <ul> inside each
+   .nav-sublist__group. `list-style` is inherited, so it does inherit
+   `none` from .nav-sublist and no native marker leaks. Resetting it
+   explicitly anyway means this stays correct if a future rule sets
+   `list-style: disc` on an ancestor. */
+.nav-sublist__group > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-sublist__label {
+  display: block;
+  padding: 0.3rem 0 0.2rem 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+.nav-link--module .nav-link__label {
+  font-size: 0.85rem;
+}
+.nav-link--all {
+  margin-top: 0.4rem;
+  border-top: 2px solid var(--border-soft);
+  border-radius: 0;
+}
+.nav-link--all .nav-link__label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-strong);
+}
+
+.sidebar__footer {
+  border-top: var(--bw) solid var(--ink);
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--bg-soft);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.55rem 0.6rem;
+  border: var(--bw) solid var(--ink);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end),
+    background-color 0.1s linear;
+}
+.theme-toggle:hover {
+  background: var(--pop);
+  color: var(--pop-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--shadow-c);
+}
+.theme-toggle__track {
+  margin-left: auto;
+  width: 42px;
+  height: 22px;
+  background: var(--surface-2);
+  border: 3px solid var(--ink);
+  position: relative;
+  flex: 0 0 42px;
+  overflow: hidden;
+}
+.theme-toggle__track.is-light {
+  background: var(--pop);
+}
+.theme-toggle__knob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background: var(--ink);
+  transition: transform 0.15s steps(3, end);
+}
+.theme-toggle__track.is-light .theme-toggle__knob {
+  transform: translateX(20px);
+}
+
+.sidebar__build {
+  font-size: 0.66rem;
+  color: var(--text-faint);
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sidebar__close {
+  display: none;
+  margin-left: auto;
+  background: var(--pop);
+  border: 3px solid var(--ink);
+  color: var(--pop-ink);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.25rem 0.45rem;
+}
+.sidebar-backdrop {
+  display: none;
+}
+
+.topbar {
+  display: none;
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The gutter lives on .main, and the measure lives on the inner
+   wrapper. That split is what makes the page box line up with the
+   cards inside it: padding inside max-width would otherwise eat into
+   the measure and leave the last card hanging past the edge. */
+.main__content {
+  flex: 1;
+  width: 100%;
+  max-width: calc(var(--content-max) + var(--gutter) * 2);
+  padding: 2.2rem var(--gutter) 3.5rem;
+}
+
+.main__content > div {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  animation: pageIn 0.25s steps(5, end) both;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-hard-lg);
+  }
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+  .sidebar__close {
+    display: grid;
+    place-items: center;
+  }
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: var(--shadow-c);
+    opacity: 0.72;
+    z-index: 55;
+    animation: fadeIn 0.15s linear both;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding: 0.7rem 1rem;
+    background: var(--pop);
+    color: var(--pop-ink);
+    border-bottom: var(--bw) solid var(--ink);
+  }
+  .topbar__button {
+    background: var(--pop);
+    border: var(--bw) solid var(--ink);
+    color: var(--pop-ink);
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: var(--shadow-hard-sm);
+  }
+  .topbar__button:hover {
+    background: var(--accent);
+    color: var(--pop-ink);
+  }
+  .topbar__title {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--pop-ink);
+    font-family: var(--display);
+    text-transform: uppercase;
+  }
+  .main {
+    margin-left: 0;
+  }
+  .main__content {
+    padding: 1.4rem var(--gutter-sm) 3rem;
+  }
+}
+
+.page-head {
+  margin-bottom: 1.8rem;
+}
+.page-head p {
+  max-width: var(--prose-max);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--pop-ink);
+  font-weight: 900;
+  font-family: var(--display);
+  background: var(--pop);
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard-sm);
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.7rem;
+}
+.eyebrow::after {
+  content: "\25B6";
+  color: var(--pop-ink);
+  font-size: 0.6rem;
+}
+
+.card {
+  background: var(--surface);
+  border: var(--bw) solid var(--ink);
+  padding: 1.35rem 1.45rem;
+  box-shadow: var(--shadow-hard);
+  position: relative;
+}
+/* No `.card:hover`. A card is a container, not a control: it is not
+   focusable, has no click handler and cannot be activated, so lifting
+   it on hover told the user it was clickable when it was not - and it
+   made the whole page twitch as the pointer swept across it. The one
+   card that IS a link is `.modcard`, and that has its own hover in
+   modules.css. */
+
+/* Secondary text. Lives here rather than in a page sheet because eight
+   components across all three areas use it. */
+.muted {
+  color: var(--text-faint);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+/* Search field. Shared by the OWASP timeline and the module catalogue;
+   the icon sits in the left padding so the text clears it. */
+.search {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--gap-sm);
+  align-items: stretch;
+  max-width: 620px;
+}
+.search__input {
+  width: 100%;
+  padding: 0.7rem 1rem 0.7rem 2.7rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 0.94rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-hard-sm);
+}
+.search__input::placeholder {
+  color: var(--text-faint);
+  font-weight: 500;
+}
+.search__input:focus {
+  outline: none;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-hard);
+}
+.search__icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink);
+  pointer-events: none;
+  z-index: 1;
+}
+.search__clear {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-left: -2.6rem;
+  margin-right: 0.4rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-hard-sm);
+}
+.search__clear:hover {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+.search__count {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* Module-catalogue variant: adds a clear button and a result count
+   beside the field, so it needs a third grid column. */
+.search--modules {
+  grid-template-columns: 1fr auto auto;
+  max-width: 780px;
+  align-items: center;
+}
+.search--modules .search__input {
+  padding-right: 2.4rem;
+}
+
+/* The search control collapses to a single column on narrow screens.
+   This lives beside the base rules on purpose: the responsive
+   override used to sit in pages.css, which meant the behaviour of a
+   shared control depended on which stylesheet happened to load. */
+@media (max-width: 900px) {
+  .search {
+    grid-template-columns: 1fr;
+  }
+  .search__count,
+  .search__clear {
+    margin-left: 0;
+  }
+  .search--modules {
+    grid-template-columns: 1fr auto;
+  }
+  .search--modules .search__count {
+    grid-column: 1 / -1;
+  }
+  /* The drawer is shorter than the screen, so the module list needs a
+     tighter cap here than the 46vh used on desktop. */
+  .nav-sublist.is-open {
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+}
+
+/* Related-module chip, used at the foot of a lesson page. */
+.module-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border: var(--bw) solid var(--ink);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.12s steps(2, end), box-shadow 0.12s steps(2, end),
+    background-color 0.1s linear;
+}
+.module-chip strong {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.module-chip:hover {
+  background: var(--pop);
+  color: var(--pop-ink);
+  text-decoration: none;
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--shadow-c);
+}
+.module-chip:hover .muted,
+.module-chip.is-current .muted {
+  color: var(--pop-ink);
+}
+.module-chip.is-current {
+  background: var(--pop);
+  color: var(--pop-ink);
+  border-color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  gap: 1.2rem;
+}
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+.grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.stat {
+  background: var(--surface);
+  border: var(--bw) solid var(--ink);
+  border-top: 9px solid var(--pop);
+  padding: 0.9rem 1rem;
+  box-shadow: var(--shadow-hard-sm);
+}
+.stat:nth-child(4n + 2) {
+  border-top-color: var(--magenta);
+}
+.stat:nth-child(4n + 3) {
+  border-top-color: var(--cyan);
+}
+.stat:nth-child(4n + 4) {
+  border-top-color: var(--lime);
+}
+/* No `.stat:hover` - a stat is a read-only number, not a control.
+   The coloured top border above is what distinguishes the four
+   tiles; nothing about them is interactive. */
+.stat__label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  font-weight: 900;
+  font-family: var(--display);
+}
+.stat__value {
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--text);
+  font-family: var(--display);
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0;
+}
+.stat__hint {
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.1rem;
+  border: var(--bw) solid var(--ink);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard-sm);
+  text-decoration: none;
+  transition: transform 0.1s steps(2, end), box-shadow 0.1s steps(2, end),
+    background-color 0.1s linear;
+}
+.btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--pop-ink);
+  text-decoration: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow-c);
+}
+.btn:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn--primary {
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard);
+}
+.btn--primary:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--on-ink);
+  box-shadow: var(--shadow-hard-lg);
+}
+.btn--success {
+  background: var(--lime);
+  color: var(--pop-ink);
+}
+.btn--success:hover:not(:disabled) {
+  background: var(--success);
+  color: var(--pop-ink);
+}
+.btn--ghost {
+  background: transparent;
+  box-shadow: none;
+}
+.btn--ghost:hover:not(:disabled) {
+  background: var(--pop);
+  box-shadow: var(--shadow-hard-sm);
+}
+.btn--sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.68rem;
+  box-shadow: 3px 3px 0 var(--shadow-c);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  font-family: var(--display);
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+  background: var(--surface-2);
+  color: var(--text);
+  white-space: nowrap;
+}
+.badge--new {
+  background: var(--lime);
+  color: var(--pop-ink);
+}
+.badge--removed {
+  background: var(--danger);
+  color: #fff;
+}
+.badge--carried {
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+}
+.badge--info {
+  background: var(--cyan);
+  color: var(--pop-ink);
+}
+.badge--latest {
+  background: var(--magenta);
+  color: #fff;
+}
+.badge--muted {
+  background: var(--surface-2);
+  color: var(--text-dim);
+}
+
+.notice {
+  padding: 0.85rem 1.05rem;
+  border: var(--bw) solid var(--ink);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-hard-sm);
+  border-left-width: 9px;
+}
+.notice--warn {
+  border-left-color: var(--on-soft-warning);
+  background: var(--warning-soft);
+}
+.notice--danger {
+  border-left-color: var(--on-soft-danger);
+  background: var(--danger-soft);
+}
+.notice--success {
+  border-left-color: var(--on-soft-success);
+  background: var(--success-soft);
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 4px solid var(--ink);
+  background: transparent;
+  animation: spin 0.8s steps(8, end) infinite;
+  flex: 0 0 28px;
+}
+.spinner--inline {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-width: 3px;
+  flex: 0 0 14px;
+  vertical-align: -2px;
+  margin-right: 0.3rem;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-dim);
+  padding: 2.5rem 0;
+  justify-content: center;
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  animation: fadeIn 0.2s linear both;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: var(--text-dim);
+  animation: pageIn 0.25s steps(5, end) both;
+}
+.empty-state h1 {
+  font-size: 1.5rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: var(--bw) solid var(--ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: var(--surface);
+}
+table.data th,
+table.data td {
+  text-align: left;
+  padding: 0.6rem 0.7rem;
+  border-bottom: 2px solid var(--ink);
+  vertical-align: top;
+}
+table.data th {
+  color: var(--on-ink);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 900;
+  font-family: var(--display);
+  background: var(--ink);
+}
+/* No `tr:hover` - the data tables are read-only. Highlighting a row
+   on hover implied it could be opened or sorted. */
+table.data tr:last-child td {
+  border-bottom: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .brut__block,
+  .brut__ring,
+  .spinner {
+    animation: none !important;
+  }
+  /* Only the hovers that still exist. `.card:hover` and `.stat:hover`
+     were removed as misleading (they are containers), so they no
+     longer need neutralising here. */
+  .modcard:hover,
+  .module-chip:hover,
+  .source-card:hover,
+  .timeline__item:hover,
+  .nav-link:hover,
+  .btn:hover:not(:disabled) {
+    transform: none !important;
+  }
+}

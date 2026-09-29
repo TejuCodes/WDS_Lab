@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Vulnerability Learning Environment</title>
+    <meta
+      name="description"
+      content="A safe, guided environment for learning the OWASP Top 10 and how it has changed over the years."
+    />
+
+    <!--
+      THEME BOOTSTRAP
+      This tiny script runs BEFORE React loads. Without it the page would
+      paint in the default theme and then flash to the saved theme a moment
+      later. It is a common trick: apply the stored theme on the <html>
+      element as soon as possible.
+      Dark is the default, matching the project requirement.
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("wvl-theme");
+          var theme = saved === "light" || saved === "dark" ? saved : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

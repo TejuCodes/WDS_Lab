@@ -1,0 +1,1007 @@
+
+
+/* The search control - base, clear button, result count and the
+   module-catalogue variant - all live in global.css, because it is
+   one shared component used by two different pages. Nothing about
+   `.search*` belongs in the module stylesheet. */
+.modfam {
+  margin-top: 2.2rem;
+}
+.modfam__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border-bottom: var(--bw) solid var(--ink);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.modfam__head h2 {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+.modfam__blurb {
+  max-width: var(--prose-max);
+  margin-bottom: 1.1rem;
+}
+
+.modcard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: var(--shadow-hard);
+  transition: transform 120ms steps(2, end), box-shadow 120ms steps(2, end);
+}
+.modcard:hover,
+.modcard:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-lg);
+  background: var(--surface-2);
+}
+.modcard__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.modcard__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-size: 1.15rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+.modcard__icon--critical {
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+}
+.modcard__icon--high {
+  background: var(--warning-soft);
+  color: var(--on-soft-warning);
+}
+.modcard__icon--medium {
+  background: var(--info-soft);
+  color: var(--on-soft-info);
+}
+.modcard h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+.modcard p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  flex: 1;
+}
+.modcard__foot {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+  border-top: 2px solid var(--border-soft);
+}
+.modcard__go {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-strong);
+}
+.modcard:hover .modcard__go {
+  color: var(--accent-strong);
+}
+
+.mod__title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.mod__icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard);
+}
+.mod__icon--critical {
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+}
+.mod__icon--high {
+  background: var(--warning-soft);
+  color: var(--on-soft-warning);
+}
+.mod__icon--medium {
+  background: var(--info-soft);
+  color: var(--on-soft-info);
+}
+
+.mod__jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.4rem 0 0.4rem;
+}
+.mod__jump a {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface-2);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0.35rem 0.7rem;
+}
+.mod__jump a:hover,
+.mod__jump a:focus-visible {
+  background: var(--pop);
+  color: var(--pop-ink);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.mod__what {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text);
+}
+.mod__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.4rem;
+}
+.mod__cols h3 {
+  margin-top: 0;
+}
+
+.ticks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+.ticks li {
+  position: relative;
+  padding-left: 1.9rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.ticks li::before {
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  content: "×";
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+}
+.ticks--ok li::before {
+  content: "✓";
+  background: var(--success-soft);
+  color: var(--on-soft-success);
+}
+
+.badge--warn {
+  background: var(--warning-soft);
+  color: var(--on-soft-warning);
+  border-color: var(--ink);
+}
+
+.mod__refs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.1rem;
+}
+.mod__ref-group {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  padding: 0.7rem 0.8rem;
+}
+.mod__ref-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mod__ref-group ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.25rem;
+}
+.mod__ref-group li {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--text-dim);
+  overflow-wrap: anywhere;
+}
+.mod__cwe {
+  margin-top: 1rem;
+  font-size: 0.86rem;
+}
+.mod__owasp h3 {
+  margin-top: 0.6rem;
+}
+.mod__next h3 {
+  margin-top: 0;
+}
+
+/* .module-chip and .muted live in global.css now; only the puzzle-local
+   size tweaks on .muted remain here. */
+
+.dia {
+  margin: 1.2rem 0 0;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-hard);
+}
+.dia__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  padding: 0.7rem 0.9rem;
+  border-bottom: var(--bw) solid var(--ink);
+  background: var(--bg-elevated);
+}
+.dia__caption {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+.dia__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.dia__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 1rem 0.6rem 0;
+  overflow: visible;
+}
+
+.dia__box {
+  fill: var(--bg-elevated);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.dia__node--neutral .dia__box {
+  fill: var(--surface-2);
+}
+.dia__text {
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--text);
+}
+.dia__edge {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-linejoin: miter;
+}
+.dia__arrowhead {
+  fill: var(--ink);
+}
+.dia__edge-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--text-faint);
+}
+
+.dia__node--attacker .dia__box {
+  fill: var(--warning-soft);
+}
+.dia__node--attacker .dia__text {
+  fill: var(--on-soft-warning);
+}
+.dia__node--danger .dia__box {
+  fill: var(--danger-soft);
+}
+.dia__node--danger .dia__text {
+  fill: var(--on-soft-danger);
+}
+.dia__node--defence .dia__box {
+  fill: var(--success-soft);
+  stroke-dasharray: 7 5;
+}
+.dia__node--defence .dia__text {
+  fill: var(--on-soft-success);
+}
+.dia__node--data .dia__box {
+  fill: var(--info-soft);
+}
+.dia__node--data .dia__text {
+  fill: var(--on-soft-info);
+}
+
+.dia__node--impact .dia__box {
+  fill: var(--danger-soft);
+  stroke-width: 4;
+}
+.dia__node--impact .dia__text {
+  fill: var(--on-soft-danger);
+  font-weight: 800;
+}
+.dia__node--wire .dia__box {
+  fill: var(--surface-2);
+}
+.dia__node--app .dia__box {
+  fill: var(--bg-elevated);
+}
+
+.dia__step {
+  fill: var(--pop);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+.dia__step-text {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--pop-ink);
+}
+
+.dia__legend {
+  margin: 0;
+  padding: 0.6rem 0.9rem 0.8rem;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 2px solid var(--border-soft);
+  margin-top: 0.8rem;
+}
+
+.hist {
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.hist__item {
+  display: grid;
+  grid-template-columns: 5.2rem 1.6rem 1fr;
+  gap: 0.4rem;
+  align-items: start;
+  position: relative;
+}
+.hist__year {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  line-height: 1.1;
+  text-align: right;
+  padding: 0.35rem 0.5rem;
+  background: var(--bg-elevated);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.hist__dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-self: start;
+  margin-top: 0.55rem;
+  width: 14px;
+  height: 14px;
+  justify-self: center;
+  background: var(--pop);
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius);
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.hist__item::before {
+  content: "";
+  position: absolute;
+  left: calc(5.2rem + 0.8rem);
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ink);
+  z-index: 0;
+}
+.hist__item:first-child::before {
+  top: 0.9rem;
+}
+.hist__item:last-child::before {
+  bottom: auto;
+  height: 0.9rem;
+}
+
+.hist__body {
+  position: relative;
+  padding-bottom: 0.9rem;
+  min-width: 0;
+}
+.hist__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.hist__toggle:hover,
+.hist__toggle:focus-visible {
+  border-color: var(--ink);
+  background: var(--surface-2);
+}
+.hist__item.is-open .hist__toggle {
+  border-color: var(--ink);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-hard-sm);
+}
+.hist__title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.hist__text {
+  margin: 0.5rem 0 0;
+  padding: 0.7rem 0.8rem;
+  border-left: 4px solid var(--accent);
+  background: var(--bg);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+.hist__earliest {
+  position: absolute;
+  right: 0;
+  top: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  border: 2px solid var(--border-soft);
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius);
+}
+
+.puzzle {
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+}
+.puzzle__head {
+  padding: 0.8rem 1rem;
+  border-bottom: var(--bw) solid var(--ink);
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+.puzzle__kind {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: var(--on-ink);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius);
+}
+/* Targets the heading by child selector, not by tag, so the heading
+   level can be corrected for accessibility without touching CSS. */
+.puzzle__head :is(h2, h3, h4, h5) {
+  margin: 0.4rem 0 0;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  line-height: 1.2;
+  border: 0;
+  padding: 0;
+  color: var(--pop-ink);
+}
+.puzzle__block {
+  padding: 1rem;
+}
+.puzzle__block + .puzzle__block {
+  border-top: var(--bw) dashed var(--ink);
+}
+.puzzle__foot {
+  padding: 0.6rem 1rem;
+  border-top: 2px solid var(--border-soft);
+  background: var(--surface-2);
+  font-size: 0.78rem;
+}
+
+.pz {
+  min-width: 0;
+}
+.pz__prompt {
+  margin: 0 0 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+.pz__question {
+  margin: 0 0 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.pz__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+.pz__hint {
+  margin: 0.8rem 0 0;
+  font-size: 0.82rem;
+}
+
+.pz__slots {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.pz__slots li {
+  margin: 0;
+}
+.pz__slot,
+.pz__slot-empty {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 42px;
+  padding: 0.4rem 0.6rem;
+  border: 2px dashed var(--border-soft);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.86rem;
+  text-align: left;
+  color: var(--text);
+}
+.pz__slot {
+  border-style: solid;
+  border-color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-hard-sm);
+}
+.pz__slot:hover {
+  background: var(--surface-2);
+}
+.pz__slot-n {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--bg-elevated);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.pz__slots.is-solved .pz__slot {
+  background: var(--success-soft);
+  border-color: var(--on-soft-success);
+}
+.pz__slots.is-solved .pz__slot.is-wrong {
+  background: var(--danger-soft);
+  border-color: var(--on-soft-danger);
+}
+/* The wrong-step marker inverts onto a saturated danger fill, so it
+   needs the ink-block pairing, not --text. */
+.pz__slots.is-failed .pz__slot.is-wrong .pz__slot-n {
+  background: var(--on-ink);
+  color: var(--ink);
+}
+
+.pz__pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.pz__pool--stack {
+  display: grid;
+  gap: 0.5rem;
+}
+.pz__tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard-sm);
+}
+.pz__tile:hover:not(:disabled) {
+  background: var(--pop);
+  color: var(--pop-ink);
+  transform: translate(-1px, -1px);
+}
+.pz__tile:disabled {
+  cursor: default;
+}
+.pz__tile--block {
+  display: grid;
+  gap: 0.3rem;
+  width: 100%;
+}
+.pz__tile--block code {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.pz__tile--block.is-picked {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+.pz__tile--block.is-right {
+  background: var(--success-soft);
+  color: var(--on-soft-success);
+  border-color: var(--on-soft-success);
+}
+.pz__tile--block.is-wrong {
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+  border-color: var(--on-soft-danger);
+}
+.pz__tile--block.is-dim {
+  opacity: 0.45;
+}
+.pz__tile-note {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pz__code {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--code-bg);
+  overflow: hidden;
+}
+.pz__code li {
+  margin: 0;
+}
+.pz__code-line {
+  display: grid;
+  grid-template-columns: 2.1rem 1fr 1.6rem;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 0;
+  border-left: 5px solid transparent;
+  background: transparent;
+  color: var(--code-text);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+}
+.pz__code-line:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  border-left-color: var(--pop);
+}
+.pz__code-line code {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.pz__line-no {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-align: right;
+}
+.pz__mark {
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+}
+.pz__code-line.is-picked {
+  border-left-color: var(--pop);
+  background: rgba(255, 230, 0, 0.12);
+}
+.pz__code-line.is-vuln {
+  border-left-color: var(--on-soft-danger);
+  background: var(--danger-soft);
+  color: var(--on-soft-danger);
+}
+.pz__code-line.is-safe {
+  border-left-color: var(--success);
+  color: var(--text-faint);
+}
+.pz__code-line.is-safe .pz__mark {
+  color: var(--success);
+}
+.pz__code-line.is-vuln .pz__mark {
+  color: var(--danger);
+}
+.pz__code-line:disabled {
+  cursor: default;
+}
+
+.pz__request {
+  margin-top: 1rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.pz__request-label {
+  display: block;
+  padding: 0.35rem 0.7rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.pz__request-body {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  background: var(--code-bg);
+  color: var(--code-text);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pz__feedback {
+  margin-top: 0.9rem;
+}
+.pz__note {
+  margin: 0;
+  padding-left: 0.9rem;
+  border-left: 4px solid var(--accent);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+.pz__check {
+  margin-top: 1rem;
+  padding: 0.8rem 0.9rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.pz__check-q {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.pz__check-q svg {
+  color: var(--warning);
+  margin-top: 0.15rem;
+  flex: 0 0 auto;
+}
+.pz__others {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+}
+.pz__others summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-strong);
+}
+.pz__others ul {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+.pz__others li {
+  padding-left: 0.7rem;
+  border-left: 3px solid var(--border-soft);
+  display: grid;
+  gap: 0.2rem;
+}
+.pz__others strong {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+.pz__others .muted {
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.pz__stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.pz__stack-item {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border: var(--bw) solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-hard-sm);
+}
+.pz__stack.is-solved .pz__stack-item {
+  background: var(--success-soft);
+  border-color: var(--on-soft-success);
+}
+.pz__stack-n {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-elevated);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+.pz__stack-body {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.pz__stack-body strong {
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.pz__stack-body .muted {
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+.pz__stack-moves {
+  display: flex;
+  gap: 0.25rem;
+}
+.pz__move {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+.pz__move:hover:not(:disabled) {
+  background: var(--pop);
+  color: var(--pop-ink);
+}
+.pz__move:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* NOTE: everything from here down used to style the sidebar. The
+   sidebar is app chrome, not a lesson, so those rules - .nav-link__count,
+   .nav-sublist__group, .nav-sublist__label, .nav-link--module,
+   .nav-link--all and the .nav-sublist.is-open height cap - now live in
+   global.css next to the rest of the navigation. They were also
+   silently overriding the `.nav-sublist` base rule from a different
+   file, so the effective value depended on stylesheet load order. */
+@media (max-width: 900px) {
+  .mod__jump {
+    gap: 0.35rem;
+  }
+  .hist__item {
+    grid-template-columns: 4.2rem 1.4rem 1fr;
+  }
+  .hist__item::before {
+    left: calc(4.2rem + 0.7rem);
+  }
+  .hist__year {
+    font-size: 0.9rem;
+  }
+  .hist__earliest {
+    display: none;
+  }
+  .pz__code-line {
+    grid-template-columns: 1.5rem 1fr 1.4rem;
+    font-size: 0.74rem;
+  }
+  .pz__stack-item {
+    grid-template-columns: 1.7rem 1fr;
+  }
+  .pz__stack-moves {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+  .dia__toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

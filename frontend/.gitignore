@@ -1,0 +1,10 @@
+# build output
+dist/
+# generated test/build scratch directories (npm run smoke / manifest)
+.smoke/
+.gen/
+.dbg/
+
+node_modules/
+*.local
+.DS_Store
